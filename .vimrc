@@ -15,15 +15,13 @@ set scrolloff=6
 set sidescrolloff=6
 set sidescroll=1
 set hlsearch
-highlight SignColumn ctermbg=black
 syntax on
 syntax enable
-au BufNewFile,BufRead *.ms set filetype=html
-au BufNewFile,BufRead *.mustache set filetype=html
-autocmd BufWritePre * :%s/\s\+$//e
 
-" disable autocomment on next line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" git gutter color
+highlight clear SignColumn
+nmap gh <Plug>GitGutterNextHunk
+nmap gH <Plug>GitGutterPrevHunk
 
 " vundle setup
 set nocompatible               " be iMproved
@@ -40,7 +38,8 @@ Bundle 'vim-stylus'
 Bundle 'vim-gitgutter'
 Bundle 'vim-easymotion'
 Bundle 'vim-seek'
-filetype plugin indent on
+Bundle 'vim-javascript'
+filetype plugin on
 
 " ctrlp settings
 let g:ctrlp_map = '<c-f>'
@@ -53,3 +52,9 @@ nmap <C-N><C-N> :set invnumber<CR>
 let g:EasyMotion_leader_key = '<Leader>'
 nmap gn <Plug>GitGutterNextHunk
 nmap gN <Plug>GitGutterPrevHunk
+
+" Turn off auto-commenting
+au FileType * setlocal formatoptions-=cro
+au BufNewFile,BufRead *.ms set filetype=html
+au BufNewFile,BufRead *.mustache set filetype=html
+autocmd BufWritePre * :%s/\s\+$//e
