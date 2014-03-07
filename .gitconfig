@@ -1,6 +1,5 @@
 [user]
 	name = John Ku
-	email = jku@solfo.com
 [branch]
 	autosetupmerge = true
 [gc]
